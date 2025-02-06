@@ -1,0 +1,1 @@
+flash_dump = true

@@ -2,6 +2,7 @@
 /back/.env.local
 /back/.env.local.php
 /back/.env.*.local
+/back/.env.dev
 /back/config/secrets/prod/prod.decrypt.private.php
 /back/public/bundles/
 /back/var/

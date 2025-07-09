@@ -14,7 +14,8 @@ const WaterLevelTable = ({ userEmail, refreshTrigger }) => {
         setError(null);
 
         // get the user's ID based on email
-        const userResponse = await fetch(`/api/users?email=${userEmail}`);
+        const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+        const userResponse = await fetch(`${apiBaseUrl}/api/users?email=${userEmail}`);
         if (!userResponse.ok) {
           throw new Error('User not found or unable to retrieve user ID.');
         }
@@ -33,7 +34,7 @@ const WaterLevelTable = ({ userEmail, refreshTrigger }) => {
         }
 
         // fetch water level data for each specific water sense URL
-        const waterLevelPromises = waterSenseUrls.map(url => fetch(url).then(res => {
+        const waterLevelPromises = waterSenseUrls.map(url => fetch(`${apiBaseUrl}${url}`).then(res => {
           if (!res.ok) {
             throw new Error(`Failed to fetch water level data from ${url}.`);
           }

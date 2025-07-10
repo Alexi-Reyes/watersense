@@ -40,4 +40,13 @@ class WaterSenseRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findLatest(): ?WaterSense
+    {
+        return $this->createQueryBuilder('w')
+            ->orderBy('w.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
